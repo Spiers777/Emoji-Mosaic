@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <input type='file' name='imageUpload' onChange={(e) => {setSelectedImage(e.target.files[0])}}></input>
-      <button onClick={handleUpload}></button>
+      <button onClick={handleUpload}>Generate</button>
       <div className='output'>
         {data ? data.map((row) => 
           <p>{row}</p>

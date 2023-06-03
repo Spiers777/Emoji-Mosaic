@@ -1,4 +1,4 @@
-import requests,re,json,cv2,time
+import requests,re,json,cv2,time,sys
 import numpy as np
 from pilmoji import Pilmoji
 from PIL import Image, ImageFont
@@ -12,7 +12,7 @@ def getAvgEmojiCol(emoji):
                 pilmoji.text((10, 10), my_string.strip(), (0, 0, 0), font)
 
             image = image.crop((9, 9, 35, 35))
-            image.save("emoji.png")
+            image.save(f'{sys.path[0]}/emoji.png')
             img = cv2.imread('emoji.png')
             avg_color_per_row = np.average(img, axis=0)
             avg_color = np.average(avg_color_per_row, axis=0)
@@ -20,7 +20,7 @@ def getAvgEmojiCol(emoji):
         else:
             return ""
 
-with open('emoji-list.json', 'r', encoding="utf8") as f:
+with open(f'{sys.path[0]}/emoji-list.json', 'r', encoding="utf8") as f:
     emojiList = json.load(f)
     colList = {}
     for i in emojiList:
