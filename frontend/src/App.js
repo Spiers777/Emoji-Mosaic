@@ -10,7 +10,7 @@ function App() {
     var reader = new FileReader();
     formData.append('file', selectedImage, selectedImage.name);
 
-    await fetch('http://localhost:5000/?sampleSize=10', {
+    await fetch('https://emoji-mosaic-backend.onrender.com/?sampleSize=10', {
       method: 'POST',
       body: formData
     }).then(response => response.json()).then(data => {
