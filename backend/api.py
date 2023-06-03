@@ -24,4 +24,5 @@ async def createMosaic(file: UploadFile = File(...), sampleSize: int = 25):
     with open("test.png", "wb+") as file_object:
         file_object.write(file.file.read())
     output = generateMosaic("test.png", sampleSize)
+    print("Completed Mosaic")
     return {"output": output}
