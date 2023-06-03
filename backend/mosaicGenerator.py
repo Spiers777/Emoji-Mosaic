@@ -1,6 +1,5 @@
 import json, cv2
 from math import sqrt
-import random
 
 def getEmoji(target):
     with open('./colourAnalysis/data.json', 'r') as fp:
