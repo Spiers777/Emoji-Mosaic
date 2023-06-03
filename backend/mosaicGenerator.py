@@ -13,7 +13,7 @@ def getEmoji(target):
         proximities.sort(key=lambda x: x["proximity"])
         return proximities[0]["emoji"]
 
-def generateMosaic(input, sampleSize):
+async def generateMosaic(input, sampleSize):
     img = cv2.imread(input)
     print(img.shape)
     height, width = int(img.shape[0]//sampleSize), int(img.shape[1]//sampleSize) #Round down to nearest multiple of sample size
