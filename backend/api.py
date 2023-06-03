@@ -7,7 +7,8 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:3000",
-    "https://emoji-mosaic.onrender.com/"
+    "https://emoji-mosaic.onrender.com",
+    "https://emoji-mosaic-backend.onrender.com"
 ]
 
 app.add_middleware(
