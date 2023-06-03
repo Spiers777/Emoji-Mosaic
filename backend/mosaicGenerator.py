@@ -15,10 +15,10 @@ def getEmoji(target):
 
 def generateMosaic(input, sampleSize):
     img = cv2.imread(input)
-    print(img.shape)
     height, width = int(img.shape[0]//sampleSize), int(img.shape[1]//sampleSize) #Round down to nearest multiple of sample size
     row, rows = []*width, []*height #Preallocate list for speed
     for y in range(height):
+        print(f"{y}/{height}")
         for x in range(width):
             row.append(getEmoji(img[y*sampleSize,x*sampleSize].tolist()))
         rows.append("".join(row))
