@@ -20,6 +20,7 @@ app.add_middleware(
 
 @app.post("/")
 async def createMosaic(file: UploadFile = File(...), sampleSize: int = 25):
+    print("Recieved File")
     with open("test.png", "wb+") as file_object:
         file_object.write(file.file.read())
     output = generateMosaic("test.png", sampleSize)
