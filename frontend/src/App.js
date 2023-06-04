@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <input type='file' name='imageUpload' onChange={(e) => {setSelectedImage(e.target.files[0])}}></input>
+      <input type='file' accept="image/*" name='imageUpload' onChange={(e) => {setSelectedImage(e.target.files[0])}}></input>
       <input type="range" min="1" max="50" defaultvalue="25" onChange={(e) => {setSampleSize(e.target.value)}}></input>{sampleSize}
       <button onClick={handleUpload}>Generate</button>
       <div className='output'>

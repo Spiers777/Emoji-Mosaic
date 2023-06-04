@@ -1,8 +1,8 @@
-import json, cv2
+import json, cv2, sys
 from math import sqrt
 
 def getEmoji(target):
-    with open('./colourAnalysis/data.json', 'r') as fp:
+    with open(f'{sys.path[0]}/colourAnalysis/data.json', 'r') as fp:
         data = json.load(fp)
         r,g,b = target[0],target[1],target[2]
         proximities = []
@@ -14,7 +14,11 @@ def getEmoji(target):
         return proximities[0]["emoji"]
 
 def generateMosaic(input, sampleSize):
-    img = cv2.imread(input)
+    srcimg = cv2.imread(input)
+    aspect = srcimg.shape[1]/srcimg.shape[0]
+    width, height = 750, int(750/aspect)
+    print(width,height)
+    img = cv2.resize(srcimg, (width,height))
     height, width = int(img.shape[0]//sampleSize), int(img.shape[1]//sampleSize) #Round down to nearest multiple of sample size
     row, rows = []*width, []*height #Preallocate list for speed
     for y in range(height):
@@ -25,5 +29,3 @@ def generateMosaic(input, sampleSize):
         row = []*width
     print("\n".join(rows))
     return rows
-
-# print(generateMosaic("test.png", 20))
